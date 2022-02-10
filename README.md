@@ -15,7 +15,7 @@ This repository is the backend that will serve APIs to the Client quote generato
 - Node.js v16.14.0 or greater
 - Yarn
 
-### Environment Setup
+### Setup
 
 1. Clone the repo
 
