@@ -1,8 +1,8 @@
+import 'dotenv/config';
 import express from 'express';
+import appConfig from './appConfig';
 
 const app = express();
-
-const serverPort = 3000;
 
 app.get('/', (req, res) => {
   res.send({
@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(serverPort, () => {
-  console.log(`server started listening on port:${serverPort}`);
+app.listen(appConfig.PORT, () => {
+  console.log(`server started listening on port:${appConfig.PORT}`);
 });
