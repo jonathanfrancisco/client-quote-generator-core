@@ -27,6 +27,7 @@ https://github.com/jonathanfrancisco/client-quote-generator-core
 
 ```
 PORT=3000
+ENVIRONMENT=dev
 ```
 
 3. Install NPM packages. Since we're using yarn for this project run:
