@@ -9,6 +9,7 @@
     "@types/node": "^17.0.16",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "pino-pretty": "^7.5.1",
     "prettier": "^2.5.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.5"
@@ -25,7 +26,7 @@
     "pino-http": "^6.6.0"
   },
   "scripts": {
-    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty"
+    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'"
   },
   "engines": {
     "node": ">=16.14.0"
