@@ -14,8 +14,9 @@ This repository is the backend that will serve APIs to the Client quote generato
 
 - Node.js v16.14.0 or greater
 - Yarn
+- pino-pretty NPM package
 
-### Setup
+### Dev Environment Setup
 
 1. Clone the repo
 
@@ -35,8 +36,14 @@ PORT=3000
 yarn install
 ```
 
-4. Start the server
+4. Install pino-pretty globally. This is used for colorizing/prettifying pino logs during development. You can also opt in installating this but make sure to remove `| pino-pretty` on `yarn start:dev` script on `package.json` before starting the dev server
 
 ```
-yarn start
+npm install pino-pretty -g
+```
+
+4. Start the dev server
+
+```
+yarn start:dev
 ```
