@@ -1,15 +1,30 @@
 import 'dotenv/config';
 import express from 'express';
-import appConfig from './appConfig';
 
+import pinoHttp from 'pino-http';
+import pino from 'pino';
+import bodyParser from 'body-parser';
+import helmet from 'helmet';
+import appConfig from './appConfig';
+import catchErrors from './utils/catchErrors';
+import handleErrors from './utils/handleErrors';
+
+import helloWorldHandler from './helloWorldHandler';
+import handleRouteNotFound from './utils/handleRouteNotFound';
+import sampleApiErrorHandler from './sampleApiErrorHandler';
+
+const logger = pino();
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send({
-    message: 'Hello World',
-  });
-});
+app.use(pinoHttp());
+app.use(bodyParser.json());
+app.use(helmet());
+
+app.get('/', catchErrors(helloWorldHandler));
+app.get('/error', catchErrors(sampleApiErrorHandler));
+app.all('*', handleRouteNotFound);
+app.use(handleErrors);
 
 app.listen(appConfig.PORT, () => {
-  console.log(`server started listening on port:${appConfig.PORT}`);
+  logger.info(`server started listening on port:${appConfig.PORT}`);
 });
