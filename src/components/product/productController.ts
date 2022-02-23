@@ -1,16 +1,35 @@
-import {Request, Response} from 'express'
+import {NextFunction, Request, Response} from 'express'
 import ProductService from './productService'
 
+const productService = new ProductService()
+
 export default {
+    
+    CreateProduct: async (req: any, res: Response, next: NextFunction) => {
+        try{
 
-    CreateProduct: async (req: any, res: Response) => {
-        const productService = new ProductService();
+            const product = await productService.createProduct(req.body);
+    
+            return res.json({
+                message: "Successfully Created",
+                result: product
+            })
+        } catch(err) {
+            next(err);
+        }
+       
+    },
+    getProducts: async (req: any, res: Response, next: NextFunction) => {
+        try {
 
-        const product = await productService.createProduct(req.body);
+            const products = await productService.getProducts()
 
-        return res.json({
-            message: "Successfully Created",
-            result: product.result
-        })
+            return res.json({
+                message: "Successfully Fetched",
+                result: products
+            })
+        }catch(err){
+            next(err)
+        }
     }
 }
