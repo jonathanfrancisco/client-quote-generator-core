@@ -1,4 +1,5 @@
-import { JSONSchema, Model, ModelOptions, QueryContext } from 'objection'
+import { v4 as uuid } from 'uuid'
+import {Model, ModelOptions, QueryContext } from 'objection'
 
 class Products extends Model {
     id!: string
@@ -36,6 +37,7 @@ class Products extends Model {
     }
 
     async $beforeInsert(queryContext: QueryContext): Promise<any> {
+        this.id = uuid()
         this.created_at = new Date().toISOString();
     }
 

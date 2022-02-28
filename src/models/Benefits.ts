@@ -1,4 +1,5 @@
-import {JSONSchema, Model} from 'objection'
+import { v4 as uuid } from 'uuid'
+import {Model, QueryContext} from 'objection'
 
 class Benefits extends Model {
     id!: string
@@ -31,6 +32,10 @@ class Benefits extends Model {
                 default: false
             }
         }
+    }
+
+    async $beforeInsert(queryContext: QueryContext): Promise<any> {
+        this.id = uuid()
     }
 }
 
