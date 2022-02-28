@@ -17,6 +17,8 @@ export default {
     GetBenefits: async (req: any, res: Response) => {
         const benefits = await benefitService.getBenefits();
 
+        console.log(typeof benefits[0].id)
+
         return res.json({
             message: "Fetched Successfully",
             result: benefits
