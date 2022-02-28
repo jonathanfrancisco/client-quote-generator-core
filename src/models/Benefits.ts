@@ -5,6 +5,7 @@ class Benefits extends Model {
     name!: string
     amount!: boolean
     value: string
+    defaultBenefit!: boolean
 
     static tableName = 'benefits';
 
@@ -24,6 +25,10 @@ class Benefits extends Model {
             },
             value: {
                 type: 'string'
+            },
+            defaultBenefit: {
+                type: 'boolean',
+                default: false
             }
         }
     }

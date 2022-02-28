@@ -7,6 +7,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string('name', 255).notNullable();
         table.boolean('amount').defaultTo(true);
         table.string('value', 255);
+        table.boolean('defaultBenefit').defaultTo(false);
     })
 }
 

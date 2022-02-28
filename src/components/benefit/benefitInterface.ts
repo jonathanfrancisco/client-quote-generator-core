@@ -2,6 +2,7 @@ export interface IBenefitBody {
     name: string
     amount: boolean
     value: string
+    defaultBenefit: boolean
 }
 
 export interface IBenefit {
@@ -9,4 +10,5 @@ export interface IBenefit {
     name: string
     amount: boolean
     value: string
+    defaultBenefit: boolean
 }
