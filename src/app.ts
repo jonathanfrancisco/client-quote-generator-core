@@ -12,12 +12,12 @@ import handleErrors from './utils/handleErrors';
 import helloWorldHandler from './helloWorldHandler';
 import handleRouteNotFound from './utils/handleRouteNotFound';
 import sampleApiErrorHandler from './sampleApiErrorHandler';
-import routes from './routes'
+import routes from './routes';
 
-import Knex from './knex'
-const knexLoader = new Knex()
+import Knex from './knex';
+const knexLoader = new Knex();
 
-knexLoader.initialize()
+knexLoader.initialize();
 
 const logger = pino();
 const app = express();
@@ -26,7 +26,7 @@ app.use(pinoHttp());
 app.use(bodyParser.json());
 app.use(helmet());
 
-app.use(routes)
+app.use(routes);
 
 app.get('/', catchErrors(helloWorldHandler));
 app.get('/error', catchErrors(sampleApiErrorHandler));

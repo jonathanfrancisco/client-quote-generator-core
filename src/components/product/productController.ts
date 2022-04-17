@@ -1,41 +1,44 @@
-import {NextFunction, Request, Response} from 'express'
-import ProductService from './productService'
+import { NextFunction, Request, Response } from 'express';
+import ProductService from './productService';
 
-const productService = new ProductService()
+const productService = new ProductService();
 
 export default {
-    
-    CreateProduct: async (req: any, res: Response, next: NextFunction) => {
-            const product = await productService.createProduct(req.body);
-    
-            return res.json({
-                message: "Created Successfully",
-                result: product
-            })
-    },
-    GetProducts: async (req: any, res: Response, next: NextFunction) => {
+  CreateProduct: async (req: any, res: Response, next: NextFunction) => {
+    const product = await productService.createProduct(req.body);
 
-            const products = await productService.getProducts()
+    return res.json({
+      message: 'Created Successfully',
+      result: product,
+    });
+  },
+  GetProducts: async (req: any, res: Response, next: NextFunction) => {
+    const products = await productService.getProducts();
 
-            return res.json({
-                message: "Fetched Successfully",
-                result: products
-            })
-    },
-    UpdateProduct: async (req: any, res: Response, next: NextFunction) => {
-            const updatedProduct = await productService.updateProduct(req.params.id, req.body)
+    return res.json({
+      message: 'Fetched Successfully',
+      result: products,
+    });
+  },
+  UpdateProduct: async (req: any, res: Response, next: NextFunction) => {
+    const updatedProduct = await productService.updateProduct(
+      req.params.id,
+      req.body,
+    );
 
-            return res.json({
-                message: "Updated Successfully",
-                results: updatedProduct
-            })
-    },
-    GetProductByCategory: async (req: any, res: Response, next: NextFunction) => {
-            const getProducts = await productService.getProductByCategory(req.params.category)
+    return res.json({
+      message: 'Updated Successfully',
+      results: updatedProduct,
+    });
+  },
+  GetProductByCategory: async (req: any, res: Response, next: NextFunction) => {
+    const getProducts = await productService.getProductByCategory(
+      req.params.category,
+    );
 
-            return res.json({
-                message: "Fetched Successfully",
-                results: getProducts
-            })
-    }
-}
+    return res.json({
+      message: 'Fetched Successfully',
+      results: getProducts,
+    });
+  },
+};
