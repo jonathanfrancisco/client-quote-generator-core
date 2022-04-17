@@ -10,16 +10,16 @@ export async function up(knex: Knex): Promise<void> {
       .references('id')
       .inTable('benefits')
       .onDelete('cascade')
-      .onUpdate('cascade'),
-      table.string('type', 255).notNullable(),
-      table
-        .uuid('clientQuoteId')
-        .unsigned()
-        .index()
-        .references('id')
-        .inTable('client_quotes')
-        .onDelete('cascade')
-        .onUpdate('cascade');
+      .onUpdate('cascade');
+    table.string('type', 255).notNullable();
+    table
+      .uuid('clientQuoteId')
+      .unsigned()
+      .index()
+      .references('id')
+      .inTable('client_quotes')
+      .onDelete('cascade')
+      .onUpdate('cascade');
   });
 }
 

@@ -4,7 +4,7 @@ import ProductService from './productService';
 const productService = new ProductService();
 
 export default {
-  CreateProduct: async (req: any, res: Response, next: NextFunction) => {
+  CreateProduct: async (req: Request, res: Response, next: NextFunction) => {
     const product = await productService.createProduct(req.body);
 
     return res.json({
@@ -12,7 +12,7 @@ export default {
       result: product,
     });
   },
-  GetProducts: async (req: any, res: Response, next: NextFunction) => {
+  GetProducts: async (req: Request, res: Response, next: NextFunction) => {
     const products = await productService.getProducts();
 
     return res.json({
@@ -20,7 +20,7 @@ export default {
       result: products,
     });
   },
-  UpdateProduct: async (req: any, res: Response, next: NextFunction) => {
+  UpdateProduct: async (req: Request, res: Response, next: NextFunction) => {
     const updatedProduct = await productService.updateProduct(
       req.params.id,
       req.body,
@@ -31,7 +31,7 @@ export default {
       results: updatedProduct,
     });
   },
-  GetProductByCategory: async (req: any, res: Response, next: NextFunction) => {
+  GetProductByCategory: async (req: Request, res: Response) => {
     const getProducts = await productService.getProductByCategory(
       req.params.category,
     );

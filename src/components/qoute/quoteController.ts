@@ -5,7 +5,7 @@ const quoteService = new QuoteService();
 
 export default {
   createQuoteForNewClient: async (
-    req: any,
+    req: Request,
     res: Response,
     next: NextFunction,
   ) => {

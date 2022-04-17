@@ -1,10 +1,8 @@
+import createError from 'http-errors';
 import Benefits from '../../models/Benefits';
 import { IBenefitBody, IBenefit } from './benefitInterface';
-import createError from 'http-errors';
 
 class BenefitService {
-  constructor() {}
-
   async createBenefit({
     name,
     amount,
@@ -18,7 +16,7 @@ class BenefitService {
       defaultBenefit,
     });
 
-    return await Benefits.query().findById(benefit.id);
+    return Benefits.query().findById(benefit.id);
   }
 
   async getBenefits(): Promise<IBenefit[]> {

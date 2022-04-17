@@ -15,6 +15,7 @@ import sampleApiErrorHandler from './sampleApiErrorHandler';
 import routes from './routes';
 
 import Knex from './knex';
+
 const knexLoader = new Knex();
 
 knexLoader.initialize();

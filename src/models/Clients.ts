@@ -1,15 +1,22 @@
-import { v4 as uuid } from 'uuid';
+import { uuid } from 'uuidv4';
 import { Model } from 'objection';
 import ClientQuotes from './ClientQuotes';
 
 class Clients extends Model {
   id!: string;
+
   name!: string;
+
   gender!: string;
+
   birthday!: string;
+
   age!: number;
+
   smokingHabit!: string;
+
   updatedAt?: string;
+
   createdAt: string;
 
   static tableName = 'clients';
@@ -58,12 +65,12 @@ class Clients extends Model {
     };
   }
 
-  async $beforeInsert(): Promise<any> {
+  async $beforeInsert(): Promise<void> {
     this.id = uuid();
     this.createdAt = new Date().toISOString();
   }
 
-  async $beforeUpdate(): Promise<any> {
+  async $beforeUpdate(): Promise<void> {
     this.updatedAt = new Date().toISOString();
   }
 }

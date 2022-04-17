@@ -10,11 +10,11 @@ export async function up(knex: Knex): Promise<void> {
       .references('id')
       .inTable('client_quotes')
       .onDelete('cascade')
-      .onUpdate('cascade'),
-      table.float('annual'),
-      table.float('semi'),
-      table.float('quarterly'),
-      table.float('monthly');
+      .onUpdate('cascade');
+    table.float('annual');
+    table.float('semi');
+    table.float('quarterly');
+    table.float('monthly');
   });
 }
 

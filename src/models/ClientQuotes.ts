@@ -1,15 +1,21 @@
-import { v4 as uuid } from 'uuid';
+import { uuid } from 'uuidv4';
 import { JSONSchema, Model } from 'objection';
 import Clients from './Clients';
 import Products from './Products';
 
 class ClientQuotes extends Model {
   id!: string;
+
   clientId!: string;
+
   productId!: string;
+
   additionalComment: string;
+
   paymentMethod: string;
+
   updatedAt?: string;
+
   createdAt: string;
 
   static tableName = 'client_quotes';
@@ -63,12 +69,12 @@ class ClientQuotes extends Model {
     };
   }
 
-  async $beforeInsert(): Promise<any> {
+  async $beforeInsert(): Promise<void> {
     this.id = uuid();
     this.createdAt = new Date().toISOString();
   }
 
-  async $beforeUpdate(): Promise<any> {
+  async $beforeUpdate(): Promise<void> {
     this.updatedAt = new Date().toISOString();
   }
 }

@@ -1,12 +1,17 @@
-import { v4 as uuid } from 'uuid';
+import { uuid } from 'uuidv4';
 import { Model, QueryContext } from 'objection';
 
 class TotalCosts extends Model {
   id!: string;
+
   clientQuoteId!: string;
+
   annual: number;
+
   semi: number;
+
   quarterly: number;
+
   monthly: number;
 
   static tableName = 'total_costs';
@@ -35,7 +40,7 @@ class TotalCosts extends Model {
     },
   };
 
-  async $beforeInsert(queryContext: QueryContext): Promise<any> {
+  async $beforeInsert(queryContext: QueryContext): Promise<void> {
     this.id = uuid();
   }
 }
