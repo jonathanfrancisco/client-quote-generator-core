@@ -14,8 +14,9 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
     "pino-pretty": "^7.5.1",
     "prettier": "^2.5.1",
     "ts-node-dev": "^1.1.8",
@@ -35,7 +36,10 @@
     "uuidv4": "^6.2.12"
   },
   "scripts": {
-    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'"
+    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'",
+    "lint": "./node_modules/.bin/eslint . --cache",
+    "lint:fix": "./node_modules/.bin/eslint . --cache --fix",
+    "prettier:fix": "./node_modules/.bin/prettier . --write"
   },
   "engines": {
     "node": ">=16.14.0"
