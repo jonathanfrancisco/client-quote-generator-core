@@ -8,7 +8,7 @@ const handleErrors = (
   err: HttpError,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (process.env.ENVIRONMENT === 'dev') {
     logger.error(err.stack);

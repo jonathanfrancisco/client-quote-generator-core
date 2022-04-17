@@ -1,52 +1,62 @@
-import Products from '../../models/Products'
-import {IProductBody, IProduct} from './productInterface'
+import Products from '../../models/Products';
+import { IProductBody, IProduct } from './productInterface';
 import createError from 'http-errors';
 
 class ProductService {
-    constructor() {}
+  constructor() {}
 
-    async createProduct({name, category, description}: IProductBody): Promise<IProduct> {
+  async createProduct({
+    name,
+    category,
+    description,
+  }: IProductBody): Promise<IProduct> {
+    const product = await Products.query().insert({
+      name,
+      category,
+      description,
+    });
 
-        const product = await Products.query().insert({
-            name,
-            category,
-            description
-        })
+    return await Products.query().findById(product.id);
+  }
 
-        return await Products.query().findById(product.id)
+  async getProducts(): Promise<IProduct[]> {
+    const products = await Products.query();
+
+    if (products.length < 1) {
+      throw createError(404, 'No products found');
     }
 
-    async getProducts(): Promise<IProduct[]> {
-        const products = await Products.query()
+    return products;
+  }
 
-        if (products.length < 1) {
-            throw createError(404, 'No products found');
-        }
+  async updateProduct(
+    id: string,
+    { name, category, description }: IProductBody,
+  ) {
+    const product = await Products.query().findOne({ id });
 
-        return products
+    if (product == null) {
+      throw createError(404, 'No product found');
     }
 
-    async updateProduct(id: string, {name, category, description}: IProductBody) {
-        const product = await Products.query().findOne({id});
+    const updatedProduct = await Products.query().patchAndFetchById(id, {
+      name,
+      category,
+      description,
+    });
 
-        if (product == null) {
-            throw createError(404, 'No product found');
-        }
+    return updatedProduct;
+  }
 
-        const updatedProduct = await Products.query().patchAndFetchById(id, {name, category, description})
+  async getProductByCategory(category: string): Promise<IProduct[]> {
+    const products = await Products.query().where({ category });
 
-        return updatedProduct
+    if (products.length < 1) {
+      throw createError(404, 'No products found');
     }
 
-    async getProductByCategory(category: string): Promise<IProduct[]> {
-        const products = await Products.query().where({category})
-
-        if (products.length < 1) {
-            throw createError(404, 'No products found');
-        }
-
-        return products;
-    }
+    return products;
+  }
 }
 
-export default ProductService
+export default ProductService;

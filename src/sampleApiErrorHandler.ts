@@ -7,7 +7,7 @@ const sampleApiErrorHandler = async (req: Request, res: Response) => {
     'SAMPLE API ERROR: This feature is currently not available Ref.: CQG01',
     {
       reason: 'In progress',
-    }
+    },
   );
 };
 
