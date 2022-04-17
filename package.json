@@ -36,7 +36,10 @@
     "uuidv4": "^6.2.12"
   },
   "scripts": {
-    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'"
+    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'",
+    "lint": "./node_modules/.bin/eslint . --cache",
+    "lint:fix": "./node_modules/.bin/eslint . --cache --fix",
+    "prettier:fix": "./node_modules/.bin/prettier . --write"
   },
   "engines": {
     "node": ">=16.14.0"
