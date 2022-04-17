@@ -1,11 +1,15 @@
-import { v4 as uuid } from 'uuid';
+import { uuid } from 'uuidv4';
 import { Model, QueryContext } from 'objection';
 
 class Benefits extends Model {
   id!: string;
+
   name!: string;
+
   amount!: boolean;
+
   value: string;
+
   defaultBenefit!: boolean;
 
   static tableName = 'benefits';
@@ -34,7 +38,7 @@ class Benefits extends Model {
     },
   };
 
-  async $beforeInsert(queryContext: QueryContext): Promise<any> {
+  async $beforeInsert(queryContext: QueryContext): Promise<void> {
     this.id = uuid();
   }
 }

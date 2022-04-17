@@ -4,7 +4,7 @@ import BenefitService from './benefitService';
 const benefitService = new BenefitService();
 
 export default {
-  CreateBenefit: async (req: any, res: Response) => {
+  CreateBenefit: async (req: Request, res: Response) => {
     const benefit = await benefitService.createBenefit(req.body);
 
     return res.json({
@@ -12,7 +12,7 @@ export default {
       result: benefit,
     });
   },
-  GetBenefits: async (req: any, res: Response) => {
+  GetBenefits: async (req: Request, res: Response) => {
     const benefits = await benefitService.getBenefits();
 
     return res.json({

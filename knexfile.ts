@@ -1,5 +1,6 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 // Update with your config settings.
@@ -7,51 +8,50 @@ dotenv.config();
 export default {
   development: {
     debug: true,
-    client: "postgresql",
+    client: 'postgresql',
     connection: {
       database: process.env.DB_NAME,
       user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      directory: __dirname + '/src/db/migrations'
-    }
+      directory: `${__dirname}/src/db/migrations`,
+    },
   },
 
   staging: {
-    client: "postgresql",
+    client: 'postgresql',
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
+      database: 'my_db',
+      user: 'username',
+      password: 'password',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: "knex_migrations"
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
-    client: "postgresql",
+    client: 'postgresql',
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
+      database: 'my_db',
+      user: 'username',
+      password: 'password',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: "knex_migrations"
-    }
-  }
-}
-
+      tableName: 'knex_migrations',
+    },
+  },
+};

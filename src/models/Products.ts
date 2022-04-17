@@ -1,12 +1,17 @@
-import { v4 as uuid } from 'uuid';
+import { uuid } from 'uuidv4';
 import { Model, ModelOptions, QueryContext } from 'objection';
 
 class Products extends Model {
   id!: string;
+
   name!: string;
+
   category!: string;
+
   description!: string;
+
   updated_at?: string;
+
   created_at: string;
 
   static tableName = 'products';
@@ -36,7 +41,7 @@ class Products extends Model {
     },
   };
 
-  async $beforeInsert(queryContext: QueryContext): Promise<any> {
+  async $beforeInsert(queryContext: QueryContext): Promise<void> {
     this.id = uuid();
     this.created_at = new Date().toISOString();
   }
@@ -44,7 +49,7 @@ class Products extends Model {
   async $beforeUpdate(
     opt: ModelOptions,
     queryContext: QueryContext,
-  ): Promise<any> {
+  ): Promise<void> {
     this.updated_at = new Date().toISOString();
   }
 }

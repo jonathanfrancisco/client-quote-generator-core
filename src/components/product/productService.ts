@@ -1,10 +1,8 @@
+import createError from 'http-errors';
 import Products from '../../models/Products';
 import { IProductBody, IProduct } from './productInterface';
-import createError from 'http-errors';
 
 class ProductService {
-  constructor() {}
-
   async createProduct({
     name,
     category,
@@ -16,7 +14,7 @@ class ProductService {
       description,
     });
 
-    return await Products.query().findById(product.id);
+    return Products.query().findById(product.id);
   }
 
   async getProducts(): Promise<IProduct[]> {

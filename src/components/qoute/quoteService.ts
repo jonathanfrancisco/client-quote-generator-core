@@ -7,8 +7,6 @@ import GetAge from '../../utils/getAge';
 import Product from '../../models/Products';
 
 class QuoteService {
-  constructor() {}
-
   async createQuoteForNewClient({
     name,
     gender,
@@ -67,7 +65,7 @@ class QuoteService {
     return {
       id: quote.id,
       ...client,
-      product: product,
+      product,
       clientBenefit: await ClientBenefits.query().where(
         'clientQuoteId',
         quote.id,
