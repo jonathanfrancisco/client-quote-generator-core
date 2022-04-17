@@ -1,9 +1,21 @@
 import { NextFunction, Request, Response } from 'express';
 
-const catchErrors = (fn: Function) => {
-  return function (req: Request, res: Response, next: NextFunction) {
+type ExpressHandlerFunction = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => Promise<Response>;
+
+const catchErrors = (fn: ExpressHandlerFunction) => {
+  function wrappedExpressHandlerFunction(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
     return fn(req, res, next).catch(next);
-  };
+  }
+
+  return wrappedExpressHandlerFunction;
 };
 
 export default catchErrors;
