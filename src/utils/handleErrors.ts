@@ -10,7 +10,7 @@ const handleErrors = (
   res: Response,
   next: NextFunction,
 ) => {
-  if (process.env.ENVIRONMENT === 'dev') {
+  if (process.env.ENVIRONMENT === 'development') {
     logger.error(err.stack);
   }
 
