@@ -5,7 +5,7 @@ import appConfig from './appConfig';
 
 class KnexLoader {
   public async initialize() {
-    const knex = Knex(knexConfig[appConfig.ENVIRONMENT]);
+    const knex = Knex(knexConfig[appConfig.environment]);
     Model.knex(knex);
   }
 }

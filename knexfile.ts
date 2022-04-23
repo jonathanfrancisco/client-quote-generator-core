@@ -1,18 +1,14 @@
 import * as Knex from 'knex';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-// Update with your config settings.
+import appConfig from './src/appConfig';
 
 export default {
   development: {
     debug: true,
     client: 'postgresql',
     connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
+      database: appConfig.database.name,
+      user: appConfig.database.username,
+      password: appConfig.database.password,
     },
     pool: {
       min: 2,
@@ -26,9 +22,9 @@ export default {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      database: appConfig.database.name,
+      user: appConfig.database.username,
+      password: appConfig.database.password,
     },
     pool: {
       min: 2,
@@ -42,9 +38,9 @@ export default {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      database: appConfig.database.name,
+      user: appConfig.database.username,
+      password: appConfig.database.password,
     },
     pool: {
       min: 2,

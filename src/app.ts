@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express from 'express';
 
 import pinoHttp from 'pino-http';
@@ -34,6 +33,6 @@ app.get('/error', catchErrors(sampleApiErrorHandler));
 app.all('*', handleRouteNotFound);
 app.use(handleErrors);
 
-app.listen(appConfig.PORT, () => {
-  logger.info(`server started listening on port:${appConfig.PORT}`);
+app.listen(appConfig.port, () => {
+  logger.info(`server started listening on port:${appConfig.port}`);
 });
