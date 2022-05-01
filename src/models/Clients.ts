@@ -73,6 +73,14 @@ class Clients extends Model {
   async $beforeUpdate(): Promise<void> {
     this.updatedAt = new Date().toISOString();
   }
+
+  toClient() {
+    const json = { ...this };
+    delete json.id;
+    delete json.updatedAt;
+    delete json.createdAt;
+    return json;
+  }
 }
 
 export default Clients;

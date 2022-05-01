@@ -46,10 +46,7 @@ class Products extends Model {
     this.created_at = new Date().toISOString();
   }
 
-  async $beforeUpdate(
-    opt: ModelOptions,
-    queryContext: QueryContext,
-  ): Promise<void> {
+  async $beforeUpdate(): Promise<void> {
     this.updated_at = new Date().toISOString();
   }
 }
