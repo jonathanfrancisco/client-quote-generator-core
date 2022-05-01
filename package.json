@@ -23,11 +23,10 @@
   },
   "dependencies": {
     "body-parser": "^1.19.1",
-    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "helmet": "^5.0.2",
     "http-errors": "^2.0.0",
-    "knex": "^1.0.3",
+    "knex": "^1.0.7",
     "objection": "^3.0.1",
     "pg": "^8.7.3",
     "pino": "^7.6.5",
@@ -36,10 +35,14 @@
     "uuidv4": "^6.2.12"
   },
   "scripts": {
-    "start:dev": "ts-node-dev ./src/app.ts | pino-pretty --singleLine --colorize --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT'",
     "lint": "./node_modules/.bin/eslint . --cache",
     "lint:fix": "./node_modules/.bin/eslint . --cache --fix",
-    "prettier:fix": "./node_modules/.bin/prettier . --write"
+    "prettier:fix": "./node_modules/.bin/prettier . --write",
+    "build:dev": "docker build --no-cache -t client-quote-generator-core .",
+    "start:dev": "docker-compose -f local-docker-compose.yaml --env-file local.env up",
+    "down:dev": "docker-compose -f local-docker-compose.yaml --env-file local.env down",
+    "start:dev-node-container": "ts-node-dev ./src/app.ts | pino-pretty --translateTime 'SYS:dddd, mmmm dS, yyyy, h:MM:ss TT' --colorize",
+    "kmigrate": "docker-compose -f local-docker-compose.yaml --env-file local.env exec client-quote-generator-core"
   },
   "engines": {
     "node": ">=16.14.0"

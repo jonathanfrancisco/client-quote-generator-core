@@ -3,9 +3,10 @@ import appConfig from './src/appConfig';
 
 export default {
   development: {
-    debug: true,
     client: 'postgresql',
     connection: {
+      host: appConfig.database.host,
+      port: appConfig.database.port,
       database: appConfig.database.name,
       user: appConfig.database.username,
       password: appConfig.database.password,
