@@ -53,7 +53,6 @@ class QuoteService {
       monthly: parseFloat((annualPremium / 12).toFixed(2)),
     });
 
-    delete client.id;
     delete costs.id;
     delete costs.clientQuoteId;
 
@@ -64,7 +63,7 @@ class QuoteService {
 
     return {
       id: quote.id,
-      ...client,
+      ...client.toClient(),
       product,
       clientBenefit: await ClientBenefits.query().where(
         'clientQuoteId',
