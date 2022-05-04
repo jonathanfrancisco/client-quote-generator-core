@@ -41,6 +41,7 @@ class QuoteService {
           benefitId: benefit.benefitId,
           type: benefit.type,
           clientQuoteId: quote.id,
+          amount: benefit.amount,
         });
       }),
     );

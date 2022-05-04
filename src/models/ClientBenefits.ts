@@ -12,6 +12,8 @@ class ClientBenefits extends Model {
 
   clientQuoteId!: string;
 
+  amount!: string;
+
   static tableName = 'client_benefits';
 
   static jsonSchema = {
@@ -28,6 +30,9 @@ class ClientBenefits extends Model {
         type: 'string',
       },
       clientQuoteId: {
+        type: 'string',
+      },
+      amount: {
         type: 'string',
       },
     },
