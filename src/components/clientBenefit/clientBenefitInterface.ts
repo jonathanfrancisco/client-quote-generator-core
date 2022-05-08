@@ -3,9 +3,11 @@ export interface IClientBenefit {
   benefitId: string;
   type: string;
   clientQuoteId: string;
+  amount: string;
 }
 
 export interface IClientBenefitBody {
   benefitId: string;
   type: string;
+  amount: string;
 }
