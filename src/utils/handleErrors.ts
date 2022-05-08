@@ -24,7 +24,7 @@ const handleErrors = (
   // but gets omitted or removed on 'httpError' once response is sent and received by client
   const httpError = err as HttpError;
 
-  return res.header(httpError.headers).status(httpError.status).send({
+  return res.status(httpError.status).send({
     error: httpError,
   });
 };
