@@ -23,6 +23,14 @@ class ProductService {
     if (products.length < 1) {
       throw createError(404, 'No products found');
     }
+    const category = 'VUL';
+    const pro = await Products.query().where({ category });
+
+    const updatedProduct = await Products.query().patchAndFetchById(pro[0].id, {
+      clientQuoteCount: 1,
+    });
+
+    console.log(updatedProduct);
 
     return products;
   }

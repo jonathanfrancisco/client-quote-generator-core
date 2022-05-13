@@ -58,14 +58,17 @@ class QuoteService {
     delete costs.clientQuoteId;
 
     const product = await Product.query().findById(productId);
-    delete product.id;
-    delete product.created_at;
-    delete product.updated_at;
+    const updatedProduct = await Product.query().patchAndFetchById(product.id, {
+      clientQuoteCount: product.clientQuoteCount + 1,
+    });
+    delete updatedProduct.id;
+    delete updatedProduct.created_at;
+    delete updatedProduct.updated_at;
 
     return {
       id: quote.id,
       ...client.toClient(),
-      product,
+      product: updatedProduct,
       clientBenefit: await ClientBenefits.query().where(
         'clientQuoteId',
         quote.id,

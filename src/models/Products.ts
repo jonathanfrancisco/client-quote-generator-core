@@ -10,6 +10,8 @@ class Products extends Model {
 
   description!: string;
 
+  clientQuoteCount: number;
+
   updated_at?: string;
 
   created_at: string;
@@ -31,6 +33,9 @@ class Products extends Model {
       },
       description: {
         type: 'string',
+      },
+      clientQuoteCount: {
+        type: 'number',
       },
       created_at: {
         type: 'string',
