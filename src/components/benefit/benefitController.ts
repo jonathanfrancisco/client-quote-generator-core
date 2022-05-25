@@ -20,4 +20,12 @@ export default {
       result: benefits,
     });
   },
+  GetNotDefaultBenefits: async (req: Request, res: Response) => {
+    const benefits = await benefitService.getNotDefaultBenefit();
+
+    return res.json({
+      message: 'Fetched Successfully',
+      result: benefits,
+    });
+  },
 };

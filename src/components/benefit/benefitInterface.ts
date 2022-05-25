@@ -3,6 +3,7 @@ export interface IBenefitBody {
   amount: boolean;
   value: string;
   defaultBenefit: boolean;
+  type: string = null;
 }
 
 export interface IBenefit {
@@ -11,4 +12,5 @@ export interface IBenefit {
   amount: boolean;
   value: string;
   defaultBenefit: boolean;
+  type: string;
 }

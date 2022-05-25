@@ -12,6 +12,8 @@ class Benefits extends Model {
 
   defaultBenefit!: boolean;
 
+  type: string = null;
+
   static tableName = 'benefits';
 
   static jsonSchema = {
@@ -34,6 +36,10 @@ class Benefits extends Model {
       defaultBenefit: {
         type: 'boolean',
         default: false,
+      },
+      type: {
+        type: 'string',
+        default: null,
       },
     },
   };

@@ -16,6 +16,10 @@ router.get(
 
 router.post('/api/benefit', catchErrors(BenefitController.CreateBenefit));
 router.get('/api/benefits', catchErrors(BenefitController.GetBenefits));
+router.get(
+  '/api/benefits/not-default',
+  catchErrors(BenefitController.GetNotDefaultBenefits),
+);
 
 router.post('/api/quote', catchErrors(QuoteController.createQuoteForNewClient));
 
