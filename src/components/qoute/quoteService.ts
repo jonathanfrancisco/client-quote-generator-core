@@ -16,7 +16,6 @@ class QuoteService {
     clientBenefit,
     additionalComment,
     annualPremium,
-    paymentMethod,
   }: IQuoteBody): Promise<IQuote> {
     const age = GetAge(birthday);
 
@@ -32,7 +31,6 @@ class QuoteService {
       clientId: client.id,
       productId,
       additionalComment,
-      paymentMethod,
     });
 
     await Promise.all(
@@ -75,8 +73,12 @@ class QuoteService {
       ),
       additionalComment: quote.additionalComment,
       totalCost: costs,
-      paymentMethod: quote.paymentMethod,
     };
+  }
+
+  async getTotalQuote() {
+    const total = await ClientQuotes.query().count();
+    return total;
   }
 }
 

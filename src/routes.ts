@@ -22,5 +22,6 @@ router.get(
 );
 
 router.post('/api/quote', catchErrors(QuoteController.createQuoteForNewClient));
+router.get('/api/quotes/total', catchErrors(QuoteController.getTotalQuote));
 
 export default router;

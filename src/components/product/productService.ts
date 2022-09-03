@@ -20,10 +20,6 @@ class ProductService {
   async getProducts(): Promise<IProduct[]> {
     const products = await Products.query();
 
-    if (products.length < 1) {
-      throw createError(404, 'No products found');
-    }
-
     return products;
   }
 
@@ -48,10 +44,6 @@ class ProductService {
 
   async getProductByCategory(category: string): Promise<IProduct[]> {
     const products = await Products.query().where({ category });
-
-    if (products.length < 1) {
-      throw createError(404, 'No products found');
-    }
 
     return products;
   }

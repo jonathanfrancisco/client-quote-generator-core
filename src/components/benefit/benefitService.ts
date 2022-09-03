@@ -38,10 +38,6 @@ class BenefitService {
   async getBenefits(): Promise<IBenefit[]> {
     const benefits = await Benefits.query();
 
-    if (benefits.length < 1) {
-      throw createError(404, 'No benefits found');
-    }
-
     return benefits;
   }
 

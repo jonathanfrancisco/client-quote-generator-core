@@ -12,7 +12,7 @@ class Benefits extends Model {
 
   defaultBenefit!: boolean;
 
-  type: string = null;
+  type: string;
 
   static tableName = 'benefits';
 

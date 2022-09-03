@@ -14,7 +14,6 @@ export interface IQuoteBody {
   clientBenefit: IClientBenefitBody[];
   additionalComment: string;
   annualPremium: number;
-  paymentMethod: string;
 }
 
 export interface IQuote {
@@ -28,7 +27,6 @@ export interface IQuote {
   clientBenefit: IClientBenefit[];
   additionalComment: string;
   totalCost: ITotalCost;
-  paymentMethod: string;
 }
 
 export interface ITotalCost {

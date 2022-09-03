@@ -12,8 +12,6 @@ class ClientQuotes extends Model {
 
   additionalComment: string;
 
-  paymentMethod: string;
-
   updatedAt?: string;
 
   createdAt: string;
@@ -34,9 +32,6 @@ class ClientQuotes extends Model {
         type: 'string',
       },
       additionalComment: {
-        type: 'string',
-      },
-      paymentMethod: {
         type: 'string',
       },
       createdAt: {

@@ -16,4 +16,12 @@ export default {
       result: quote,
     });
   },
+  getTotalQuote: async (req: Request, res: Response, next: NextFunction) => {
+    const totalQuote = await quoteService.getTotalQuote();
+
+    return res.json({
+      message: '',
+      result: totalQuote,
+    });
+  },
 };
