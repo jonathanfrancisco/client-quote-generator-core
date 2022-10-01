@@ -1,4 +1,4 @@
-import { IProduct } from '../product/productInterface';
+import { IProductWithoutBenefit } from '../product/productInterface';
 import { IBenefit } from '../benefit/benefitInterface';
 import {
   IClientBenefit,
@@ -23,7 +23,7 @@ export interface IQuote {
   birthday: string;
   age: number;
   smokingHabit: string;
-  product: IProduct;
+  product: IProductWithoutBenefit;
   clientBenefit: IClientBenefit[];
   additionalComment: string;
   totalCost: ITotalCost;

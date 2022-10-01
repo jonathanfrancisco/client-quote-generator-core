@@ -6,15 +6,16 @@ import QuoteController from './components/qoute/quoteController';
 
 const router = express.Router();
 
-router.post('/api/product', catchErrors(ProductController.CreateProduct));
+router.post('/api/products', catchErrors(ProductController.CreateProduct));
 router.get('/api/products', catchErrors(ProductController.GetProducts));
-router.put('/api/product/:id', catchErrors(ProductController.UpdateProduct));
+router.put('/api/products/:id', catchErrors(ProductController.UpdateProduct));
 router.get(
   '/api/products/:category',
   catchErrors(ProductController.GetProductByCategory),
 );
+router.get('/api/product/:id', catchErrors(ProductController.GetProductById));
 
-router.post('/api/benefit', catchErrors(BenefitController.CreateBenefit));
+router.post('/api/benefits', catchErrors(BenefitController.CreateBenefit));
 router.get('/api/benefits', catchErrors(BenefitController.GetBenefits));
 router.get(
   '/api/benefits/not-default',

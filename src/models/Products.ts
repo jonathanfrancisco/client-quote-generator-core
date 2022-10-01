@@ -1,5 +1,7 @@
 import { uuid } from 'uuidv4';
 import { Model, ModelOptions, QueryContext } from 'objection';
+import ProductBenefits from './ProductBenefits';
+import Benefits from './Benefits';
 
 class Products extends Model {
   id!: string;
@@ -45,6 +47,23 @@ class Products extends Model {
       },
     },
   };
+
+  static get relationMappings() {
+    return {
+      benefits: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Benefits,
+        join: {
+          from: 'products.id',
+          through: {
+            from: 'product_benefits.productId',
+            to: 'product_benefits.benefitId',
+          },
+          to: 'benefits.id',
+        },
+      },
+    };
+  }
 
   async $beforeInsert(queryContext: QueryContext): Promise<void> {
     this.id = uuid();

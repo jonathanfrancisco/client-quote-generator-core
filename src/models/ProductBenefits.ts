@@ -1,61 +1,52 @@
 import { uuid } from 'uuidv4';
 import { Model, QueryContext } from 'objection';
+import Benefits from './Benefits';
 import Products from './Products';
 
-class Benefits extends Model {
+class ProductBenefits extends Model {
   id!: string;
 
-  name!: string;
+  type!: string;
 
-  amount!: boolean;
+  productId!: string;
 
-  value: string;
+  benefitId!: string;
 
-  defaultBenefit!: boolean;
-
-  type: string;
-
-  static tableName = 'benefits';
+  static tableName = 'product_benefits';
 
   static jsonSchema = {
     type: 'object',
-    required: ['name'],
     properties: {
       id: {
         type: 'string',
       },
-      name: {
-        type: 'string',
-      },
-      amount: {
-        type: 'boolean',
-        default: true,
-      },
-      value: {
-        type: 'string',
-      },
-      defaultBenefit: {
-        type: 'boolean',
-        default: false,
-      },
       type: {
         type: 'string',
-        default: null,
+      },
+      productId: {
+        type: 'string',
+      },
+      benefitId: {
+        type: 'string',
       },
     },
   };
 
   static get relationMappings() {
     return {
-      products: {
+      benefits: {
         relation: Model.ManyToManyRelation,
+        modelClass: Benefits,
+        join: {
+          from: 'product_benefits.benefitId',
+          to: 'benefits.id',
+        },
+      },
+      product: {
+        relation: Model.BelongsToOneRelation,
         modelClass: Products,
         join: {
-          from: 'benefits.id',
-          through: {
-            from: 'product_benefits.benefitId',
-            to: 'product_benefits.productId',
-          },
+          from: 'product_benefits.productId',
           to: 'products.id',
         },
       },
@@ -66,5 +57,4 @@ class Benefits extends Model {
     this.id = uuid();
   }
 }
-
-export default Benefits;
+export default ProductBenefits;

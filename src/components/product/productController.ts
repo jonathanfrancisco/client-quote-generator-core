@@ -41,4 +41,12 @@ export default {
       results: getProducts,
     });
   },
+  GetProductById: async (req: Request, res: Response) => {
+    const product = await productService.getProductById(req.params.id);
+
+    return res.json({
+      message: 'Fetched Successfully',
+      results: product,
+    });
+  },
 };
