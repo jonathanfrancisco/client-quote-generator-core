@@ -39,6 +39,10 @@ class ProductBenefits extends Model {
         modelClass: Benefits,
         join: {
           from: 'product_benefits.benefitId',
+          through: {
+            from: 'product_benefits.productId',
+            to: 'product_benefits.benefitId',
+          },
           to: 'benefits.id',
         },
       },

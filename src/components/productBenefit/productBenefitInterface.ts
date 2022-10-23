@@ -3,7 +3,7 @@ import { IBenefit } from '../benefit/benefitInterface';
 export interface IProductBenefit {
   benefitId: string;
   type: string;
-  productId: string;
+  productName: string;
 }
 
 export interface IProductBenefitBody {

@@ -6,6 +6,7 @@ import {
   IProductWithoutBenefit,
 } from './productInterface';
 import ProductBenefits from '../../models/ProductBenefits';
+import Benefits from '../../models/Benefits';
 
 class ProductService {
   async createProduct({
@@ -30,12 +31,27 @@ class ProductService {
       }),
     );
 
+    const productBenefits = await ProductBenefits.query()
+      .where('productId', product.id)
+      .withGraphFetched('benefits');
+
+    const mapProductBenefits = [];
+
+    await Promise.all(
+      productBenefits.map(async (benefit) => {
+        const ben = await Benefits.query().findById(benefit.benefitId);
+        const benefitDetails = {
+          benefitId: benefit.benefitId,
+          type: benefit.type,
+          benefitName: ben.name,
+        };
+        mapProductBenefits.push(benefitDetails);
+      }),
+    );
+
     return {
       ...product,
-      productBenefits: await ProductBenefits.query().where(
-        'productId',
-        product.id,
-      ),
+      productBenefits: mapProductBenefits,
     };
   }
 
@@ -79,11 +95,50 @@ class ProductService {
       .withGraphFetched('benefits')
       .findOne('id', product.id);
 
+    const productBenefits = await ProductBenefits.query()
+      .where('productId', product.id)
+      .withGraphFetched('benefits');
+
+    const defaultBenefit = await Benefits.query().where('defaultBenefit', true);
+
+    const mapProductBenefits = [];
+    const mapDefaultBenefits = [];
+
+    await Promise.all(
+      productBenefits.map(async (benefit) => {
+        const ben = await Benefits.query().findById(benefit.benefitId);
+        const benefitDetails = {
+          benefitId: benefit.benefitId,
+          type: benefit.type,
+          benefitName: ben.name,
+        };
+        mapProductBenefits.push(benefitDetails);
+      }),
+    );
+
+    await Promise.all(
+      defaultBenefit.map(async (benefit) => {
+        const benefitDetails = {
+          benefitId: benefit.id,
+          type: benefit.type,
+          benefitName: benefit.name,
+        };
+        mapDefaultBenefits.push(benefitDetails);
+      }),
+    );
+
+    const mergeBenefit = mapProductBenefits.concat(mapDefaultBenefits);
+
+    const seen = new Set();
+    const benefits = mergeBenefit.filter((el) => {
+      const duplicate = seen.has(el.benefitId);
+      seen.add(el.benefitId);
+      return !duplicate;
+    });
+
     return {
       ...product,
-      productBenefits: await ProductBenefits.query()
-        .where('productId', product.id)
-        .withGraphFetched('benefits'),
+      productBenefits: benefits,
     };
   }
 }
