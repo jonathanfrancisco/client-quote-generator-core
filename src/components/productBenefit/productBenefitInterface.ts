@@ -4,6 +4,7 @@ export interface IProductBenefit {
   benefitId: string;
   type: string;
   productName: string;
+  value: string;
 }
 
 export interface IProductBenefitBody {

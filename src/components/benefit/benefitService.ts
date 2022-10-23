@@ -42,7 +42,7 @@ class BenefitService {
   }
 
   async getNotDefaultBenefit(): Promise<IBenefit[]> {
-    const benefits = await Benefits.query().where('type', null);
+    const benefits = await Benefits.query().where('defaultBenefit', false);
 
     if (benefits.length < 1) {
       throw createError(404, 'No benefits found');

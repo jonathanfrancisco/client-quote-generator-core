@@ -39,11 +39,12 @@ class ProductService {
 
     await Promise.all(
       productBenefits.map(async (benefit) => {
-        const ben = await Benefits.query().findById(benefit.benefitId);
+        const bene = await Benefits.query().findById(benefit.benefitId);
         const benefitDetails = {
           benefitId: benefit.benefitId,
           type: benefit.type,
-          benefitName: ben.name,
+          benefitName: bene.name,
+          value: bene.value,
         };
         mapProductBenefits.push(benefitDetails);
       }),
@@ -106,11 +107,12 @@ class ProductService {
 
     await Promise.all(
       productBenefits.map(async (benefit) => {
-        const ben = await Benefits.query().findById(benefit.benefitId);
+        const bene = await Benefits.query().findById(benefit.benefitId);
         const benefitDetails = {
           benefitId: benefit.benefitId,
           type: benefit.type,
-          benefitName: ben.name,
+          benefitName: bene.name,
+          value: bene.value,
         };
         mapProductBenefits.push(benefitDetails);
       }),
@@ -122,6 +124,7 @@ class ProductService {
           benefitId: benefit.id,
           type: benefit.type,
           benefitName: benefit.name,
+          value: benefit.value,
         };
         mapDefaultBenefits.push(benefitDetails);
       }),
