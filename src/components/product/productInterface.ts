@@ -17,8 +17,8 @@ export interface IProduct {
   category: string;
   description: string;
   clientQuoteCount: number;
-  create_at?: string;
-  updated_at?: string;
+  createAt?: string;
+  updatedAt?: string;
   productBenefits: IProductBenefit[];
 }
 

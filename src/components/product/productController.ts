@@ -28,7 +28,7 @@ export default {
 
     return res.json({
       message: 'Updated Successfully',
-      results: updatedProduct,
+      result: updatedProduct,
     });
   },
   GetProductByCategory: async (req: Request, res: Response) => {
@@ -38,7 +38,7 @@ export default {
 
     return res.json({
       message: 'Fetched Successfully',
-      results: getProducts,
+      result: getProducts,
     });
   },
   GetProductById: async (req: Request, res: Response) => {
@@ -46,7 +46,7 @@ export default {
 
     return res.json({
       message: 'Fetched Successfully',
-      results: product,
+      result: product,
     });
   },
 };

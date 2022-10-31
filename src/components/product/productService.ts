@@ -45,6 +45,7 @@ class ProductService {
           type: benefit.type,
           benefitName: bene.name,
           value: bene.value,
+          amount: bene.amount,
         };
         mapProductBenefits.push(benefitDetails);
       }),
@@ -113,6 +114,7 @@ class ProductService {
           type: benefit.type,
           benefitName: bene.name,
           value: bene.value,
+          amount: bene.amount,
         };
         mapProductBenefits.push(benefitDetails);
       }),
@@ -125,6 +127,7 @@ class ProductService {
           type: benefit.type,
           benefitName: benefit.name,
           value: benefit.value,
+          amount: benefit.amount,
         };
         mapDefaultBenefits.push(benefitDetails);
       }),

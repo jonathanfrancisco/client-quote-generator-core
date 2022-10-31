@@ -5,6 +5,7 @@ export interface IProductBenefit {
   type: string;
   productName: string;
   value: string;
+  amount: boolean;
 }
 
 export interface IProductBenefitBody {

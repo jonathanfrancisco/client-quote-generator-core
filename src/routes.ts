@@ -3,6 +3,7 @@ import ProductController from './components/product/productController';
 import catchErrors from './utils/catchErrors';
 import BenefitController from './components/benefit/benefitController';
 import QuoteController from './components/qoute/quoteController';
+import ClientController from './components/client/clientController';
 
 const router = express.Router();
 
@@ -24,5 +25,8 @@ router.get(
 
 router.post('/api/quote', catchErrors(QuoteController.createQuoteForNewClient));
 router.get('/api/quotes/total', catchErrors(QuoteController.getTotalQuote));
+
+router.get('/api/clients', catchErrors(ClientController.GetClients));
+router.get('/api/clients/:id', catchErrors(ClientController.GetClientById));
 
 export default router;
