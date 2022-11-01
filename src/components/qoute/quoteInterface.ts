@@ -35,3 +35,12 @@ export interface ITotalCost {
   quarterly: number;
   monthly: number;
 }
+
+export interface IQuoteExistingClientBody {
+  id: string;
+  smokingHabit: string;
+  productId: string;
+  clientBenefit: IClientBenefitBody[];
+  additionalComment: string;
+  annualPremium: number;
+}

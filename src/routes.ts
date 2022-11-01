@@ -23,8 +23,15 @@ router.get(
   catchErrors(BenefitController.GetNotDefaultBenefits),
 );
 
-router.post('/api/quote', catchErrors(QuoteController.createQuoteForNewClient));
+router.post(
+  '/api/quote/new',
+  catchErrors(QuoteController.createQuoteForNewClient),
+);
 router.get('/api/quotes/total', catchErrors(QuoteController.getTotalQuote));
+router.post(
+  '/api/quote/existing',
+  catchErrors(QuoteController.createQuoteForExistingClient),
+);
 
 router.get('/api/clients', catchErrors(ClientController.GetClients));
 router.get('/api/clients/:id', catchErrors(ClientController.GetClientById));

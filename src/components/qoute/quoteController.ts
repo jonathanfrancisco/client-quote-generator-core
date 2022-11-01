@@ -24,4 +24,16 @@ export default {
       result: totalQuote,
     });
   },
+  createQuoteForExistingClient: async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    const quote = await quoteService.createQuoteForExistingClient(req.body);
+
+    return res.json({
+      message: 'Created Successfully',
+      result: quote,
+    });
+  },
 };
