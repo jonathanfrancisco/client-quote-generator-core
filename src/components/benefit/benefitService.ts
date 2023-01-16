@@ -3,7 +3,7 @@ import Benefits from '../../models/Benefits';
 import { IBenefitBody, IBenefit } from './benefitInterface';
 
 class BenefitService {
-  async createBenefit({
+  async createProductBenefit({
     name,
     amount,
     value,
@@ -49,6 +49,24 @@ class BenefitService {
     }
 
     return benefits;
+  }
+
+  async createBenefit({
+    name,
+    amount,
+    value,
+    defaultBenefit = false,
+    type,
+  }): Promise<IBenefitBody> {
+    const benefit = await Benefits.query().insert({
+      name,
+      amount,
+      value,
+      defaultBenefit,
+      type,
+    });
+
+    return Benefits.query().findById(benefit.id);
   }
 }
 

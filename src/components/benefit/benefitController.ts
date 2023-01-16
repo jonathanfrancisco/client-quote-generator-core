@@ -4,8 +4,8 @@ import BenefitService from './benefitService';
 const benefitService = new BenefitService();
 
 export default {
-  CreateBenefit: async (req: Request, res: Response) => {
-    const benefit = await benefitService.createBenefit(req.body);
+  CreateProductBenefit: async (req: Request, res: Response) => {
+    const benefit = await benefitService.createProductBenefit(req.body);
 
     return res.json({
       message: 'Created Successfully',
@@ -26,6 +26,14 @@ export default {
     return res.json({
       message: 'Fetched Successfully',
       result: benefits,
+    });
+  },
+  CreateBenefit: async (req: Request, res: Response) => {
+    const benefit = await benefitService.createBenefit(req.body);
+
+    return res.json({
+      message: 'Created Successfully',
+      result: benefit,
     });
   },
 };

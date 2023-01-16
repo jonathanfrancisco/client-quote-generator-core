@@ -16,12 +16,17 @@ router.get(
 );
 router.get('/api/product/:id', catchErrors(ProductController.GetProductById));
 
-router.post('/api/benefits', catchErrors(BenefitController.CreateBenefit));
+router.post(
+  '/api/product/benefits',
+  catchErrors(BenefitController.CreateProductBenefit),
+);
 router.get('/api/benefits', catchErrors(BenefitController.GetBenefits));
 router.get(
   '/api/benefits/not-default',
   catchErrors(BenefitController.GetNotDefaultBenefits),
 );
+
+router.post('/api/benefits', catchErrors(BenefitController.CreateBenefit));
 
 router.post(
   '/api/quote/new',
