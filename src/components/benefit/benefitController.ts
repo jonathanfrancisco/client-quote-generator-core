@@ -12,6 +12,17 @@ export default {
       result: benefit,
     });
   },
+  UpdateBenefit: async (req: Request, res: Response) => {
+    const benefit = await benefitService.updateBenefit({
+      benefitId: req.params.id,
+      ...req.body,
+    });
+
+    return res.json({
+      message: 'Updated Successfully',
+      result: benefit,
+    });
+  },
   GetBenefits: async (req: Request, res: Response) => {
     const benefits = await benefitService.getBenefits();
 

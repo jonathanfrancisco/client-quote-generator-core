@@ -7,6 +7,7 @@ import ClientController from './components/client/clientController';
 
 const router = express.Router();
 
+// Product Routes
 router.post('/api/products', catchErrors(ProductController.CreateProduct));
 router.get('/api/products', catchErrors(ProductController.GetProducts));
 router.put('/api/products/:id', catchErrors(ProductController.UpdateProduct));
@@ -16,13 +17,16 @@ router.get(
 );
 router.get('/api/product/:id', catchErrors(ProductController.GetProductById));
 
+// Benefits Routes
 router.post('/api/benefits', catchErrors(BenefitController.CreateBenefit));
+router.put('/api/benefits/:id', catchErrors(BenefitController.UpdateBenefit));
 router.get('/api/benefits', catchErrors(BenefitController.GetBenefits));
 router.get(
   '/api/benefits/not-default',
   catchErrors(BenefitController.GetNotDefaultBenefits),
 );
 
+// Quotes Routes
 router.post(
   '/api/quote/new',
   catchErrors(QuoteController.createQuoteForNewClient),
@@ -33,6 +37,7 @@ router.post(
   catchErrors(QuoteController.createQuoteForExistingClient),
 );
 
+// Clients Routes
 router.get('/api/clients', catchErrors(ClientController.GetClients));
 router.get('/api/clients/:id', catchErrors(ClientController.GetClientById));
 

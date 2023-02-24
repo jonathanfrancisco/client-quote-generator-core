@@ -35,6 +35,37 @@ class BenefitService {
     return Benefits.query().findById(benefit.id);
   }
 
+  async updateBenefit({
+    benefitId,
+    name,
+    amount,
+    value,
+    defaultBenefit,
+    type,
+  }): Promise<IBenefitBody> {
+    if (defaultBenefit && type === '') {
+      throw createError(
+        422,
+        "Error: Type shouldn't be null if the benefit is default",
+      );
+    }
+
+    if (!defaultBenefit && type !== '') {
+      throw createError(
+        422,
+        'Error: Type should be null if the benefit is not default',
+      );
+    }
+
+    return Benefits.query().updateAndFetchById(benefitId, {
+      name,
+      amount,
+      value,
+      defaultBenefit,
+      type,
+    });
+  }
+
   async getBenefits(): Promise<IBenefit[]> {
     const benefits = await Benefits.query();
 
